@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vicente & Miriam · 10 de Abril</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F5EFE0;
+    --sand: #E8D9BC;
+    --earth: #A07850;
+    --bark: #6B4C30;
+    --sage: #7A8C6A;
+    --moss: #4E6044;
+    --stone: #9C9080;
+    --dark: #3A2E22;
+    --light: #FAF6EE;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--sand);
+    display: flex; justify-content: center; gap: 2.5rem;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--stone);
+    text-decoration: none; transition: color 0.3s;
+  }
+  nav a:hover { color: var(--moss); }
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-botanical {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+  }
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 300; font-style: italic;
+    color: var(--dark); line-height: 1;
+    position: relative; z-index: 1;
+  }
+  .hero-amp {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--earth); display: block;
+    margin: 0.3rem 0;
+  }
+  .hero-date {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--stone);
+    margin-top: 2rem; position: relative; z-index: 1;
+  }
+  .hero-date::before, .hero-date::after {
+    content: '—'; margin: 0 1rem; color: var(--earth);
+  }
+  .hero-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic;
+    color: var(--earth); margin-top: 0.5rem;
+    position: relative; z-index: 1;
+  }
+  .countdown {
+    display: flex; gap: 2rem; margin-top: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .count-box { text-align: center; }
+  .count-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--bark); line-height: 1; display: block;
+  }
+  .count-label {
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--stone);
+  }
+  .count-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: var(--sand);
+    align-self: flex-start; padding-top: 0.3rem;
+  }
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 820px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--sage);
+    text-align: center; margin-bottom: 0.75rem;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; width: 40px; height: 1px; background: var(--sand);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300; text-align: center;
+    color: var(--dark); margin-bottom: 2.5rem;
+  }
+  #historia { background: var(--light); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0.4rem; bottom: 0;
+    width: 1px; background: var(--sand);
+  }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+  .timeline-dot {
+    position: absolute; left: -2rem;
+    width: 8px; height: 8px;
+    border-radius: 50%; background: var(--earth);
+    border: 2px solid var(--cream);
+    top: 0.4rem;
+    box-shadow: 0 0 0 3px var(--sand);
+  }
+  .timeline-year {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--earth);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-style: italic;
+    color: var(--dark); line-height: 1.7;
+  }
+  #cuando { background: var(--cream); }
+  .info-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+  .info-card {
+    background: var(--light);
+    border: 1px solid var(--sand);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .info-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+  .info-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--bark); margin-bottom: 0.5rem;
+  }
+  .info-card p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
+  .info-card a {
+    display: inline-block; margin-top: 1rem;
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sage);
+    text-decoration: none; border-bottom: 1px solid var(--sage);
+    padding-bottom: 2px;
+  }
+  #fotos { background: var(--light); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 8px; border-radius: 4px; overflow: hidden;
+  }
+  .photo-cell {
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .photo-cell:first-child { grid-row: 1 / 3; }
+  .photo-cell img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-style: italic;
+    color: var(--earth); text-align: center; padding: 1rem;
+    position: absolute;
+  }
+  #dresscode { background: var(--cream); }
+  .palette { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .swatch { text-align: center; }
+  .swatch-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%; margin: 0 auto 0.5rem;
+    border: 2px solid rgba(0,0,0,0.08);
+  }
+  .swatch-name { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+  .dresscode-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic;
+    color: var(--dark); text-align: center;
+    line-height: 1.8; max-width: 500px; margin: 0 auto;
+  }
+  .avoid-tag {
+    display: inline-block;
+    background: #f0ebe0;
+    border: 1px solid var(--sand);
+    border-radius: 20px;
+    font-size: 11px; color: var(--stone);
+    padding: 4px 14px; margin: 4px;
+  }
+  #regalos { background: var(--light); }
+  .gift-box {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 4px;
+    padding: 2.5rem;
+    text-align: center; max-width: 520px; margin: 0 auto;
+  }
+  .gift-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--dark); line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .iban-box {
+    background: var(--light);
+    border: 1px dashed var(--sand);
+    border-radius: 4px; padding: 1rem 1.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.05em;
+    color: var(--bark);
+  }
+  .iban-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.25rem; }
+  #rsvp { background: var(--dark); }
+  #rsvp .section-label { color: var(--earth); }
+  #rsvp .section-label::before, #rsvp .section-label::after { background: var(--bark); }
+  #rsvp .section-title { color: var(--cream); }
+  .rsvp-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
+  .form-field input, .form-field select, .form-field textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--bark);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; color: var(--cream);
+    outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-field input::placeholder { color: var(--stone); }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--earth); }
+  .form-field select option { background: var(--dark); color: var(--cream); }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+  .btn-rsvp {
+    background: var(--earth);
+    color: var(--cream);
+    border: none; border-radius: 2px;
+    padding: 1rem; font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s; margin-top: 0.5rem;
+  }
+  .btn-rsvp:hover { background: var(--bark); }
+  .rsvp-success {
+    text-align: center; display: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-style: italic;
+    color: var(--cream); line-height: 1.7;
+  }
+  footer {
+    background: var(--dark);
+    border-top: 1px solid var(--bark);
+    padding: 2rem;
+    text-align: center;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--stone);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#historia">Nuestra historia</a>
+  <a href="#cuando">Cuándo y dónde</a>
+  <a href="#fotos">Fotos</a>
+  <a href="#dresscode">Dress code</a>
+  <a href="#regalos">Regalos</a>
+  <a href="#rsvp">Confirmar asistencia</a>
+</nav>
+
+<section class="hero">
+  <svg class="hero-botanical" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.18" stroke="#7A8C6A" fill="none" stroke-linecap="round">
+      <path d="M -20 120 Q 80 80 150 160 Q 200 220 170 300" stroke-width="1.5"/>
+      <path d="M 60 100 Q 90 130 75 170" stroke-width="1"/>
+      <path d="M 100 120 Q 140 150 125 190" stroke-width="1"/>
+      <path d="M 130 155 Q 170 180 155 220" stroke-width="1"/>
+      <ellipse cx="72" cy="168" rx="14" ry="8" transform="rotate(-30 72 168)" fill="#7A8C6A"/>
+      <ellipse cx="122" cy="188" rx="14" ry="8" transform="rotate(-20 122 188)" fill="#7A8C6A"/>
+      <ellipse cx="152" cy="220" rx="12" ry="7" transform="rotate(-15 152 220)" fill="#7A8C6A"/>
+      <circle cx="55" cy="92" r="4" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="55" cy="84" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="48" cy="89" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="62" cy="89" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="55" cy="92" r="2" fill="#A07850"/>
+    </g>
+    <g opacity="0.18" stroke="#7A8C6A" fill="none" stroke-linecap="round">
+      <path d="M 1220 80 Q 1100 120 1060 220 Q 1030 310 1070 390" stroke-width="1.5"/>
+      <path d="M 1130 110 Q 1095 145 1110 185" stroke-width="1"/>
+      <path d="M 1090 160 Q 1055 195 1070 235" stroke-width="1"/>
+      <ellipse cx="1113" cy="183" rx="14" ry="8" transform="rotate(25 1113 183)" fill="#7A8C6A"/>
+      <ellipse cx="1073" cy="233" rx="12" ry="7" transform="rotate(20 1073 233)" fill="#7A8C6A"/>
+      <circle cx="1145" cy="102" r="4" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="1145" cy="94" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="1138" cy="99" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="1152" cy="99" r="3" fill="#E8D9BC" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="1145" cy="102" r="2" fill="#A07850"/>
+    </g>
+    <g opacity="0.15" stroke="#7A8C6A" fill="none" stroke-linecap="round">
+      <path d="M 0 750 Q 200 720 400 740 Q 600 760 800 730 Q 1000 700 1200 740" stroke-width="1.5"/>
+      <ellipse cx="150" cy="728" rx="18" ry="10" transform="rotate(10 150 728)" fill="#7A8C6A"/>
+      <ellipse cx="350" cy="738" rx="16" ry="9" transform="rotate(-5 350 738)" fill="#7A8C6A"/>
+      <ellipse cx="550" cy="748" rx="20" ry="11" transform="rotate(8 550 748)" fill="#7A8C6A"/>
+      <ellipse cx="750" cy="733" rx="16" ry="9" transform="rotate(-10 750 733)" fill="#7A8C6A"/>
+      <ellipse cx="950" cy="718" rx="18" ry="10" transform="rotate(5 950 718)" fill="#7A8C6A"/>
+      <circle cx="250" cy="725" r="5" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="250" cy="716" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="243" cy="721" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="257" cy="721" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="250" cy="725" r="2.5" fill="#A07850"/>
+      <circle cx="650" cy="740" r="5" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="650" cy="731" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="643" cy="736" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="657" cy="736" r="4" fill="#F5EFE0" stroke="#A07850" stroke-width="0.8"/>
+      <circle cx="650" cy="740" r="2.5" fill="#A07850"/>
+    </g>
+  </svg>
+
+  <p class="hero-date">10 de Abril</p>
+  <h1 class="hero-names">
+    Vicente
+    <span class="hero-amp">&amp;</span>
+    Miriam
+  </h1>
+  <p class="hero-location">Igrexa de Santiago · A Coruña</p>
+
+  <div class="countdown">
+    <div class="count-box">
+      <span class="count-num" id="cd-days">—</span>
+      <span class="count-label">días</span>
+    </div>
+    <span class="count-sep">:</span>
+    <div class="count-box">
+      <span class="count-num" id="cd-hours">—</span>
+      <span class="count-label">horas</span>
+    </div>
+    <span class="count-sep">:</span>
+    <div class="count-box">
+      <span class="count-num" id="cd-mins">—</span>
+      <span class="count-label">minutos</span>
+    </div>
+    <span class="count-sep">:</span>
+    <div class="count-box">
+      <span class="count-num" id="cd-secs">—</span>
+      <span class="count-label">segundos</span>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="section-inner">
+    <p class="section-label">Nuestra historia</p>
+    <h2 class="section-title">Cómo llegamos hasta aquí</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">El primer encuentro</div>
+        <p class="timeline-text">Aquí puedes contar cómo os conocisteis. Un momento especial que marcó el comienzo de todo.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Nuestro primer viaje</div>
+        <p class="timeline-text">Esos momentos que os hicieron saber que erais el uno para el otro. Anécdotas, lugares, recuerdos.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">La pedida</div>
+        <p class="timeline-text">El momento en que decidisteis dar el paso más importante. Aquí va la historia de la propuesta.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">10 de Abril — El gran día</div>
+        <p class="timeline-text">Y ahora, os unís para siempre. Gracias por acompañarnos en este momento tan especial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cuando">
+  <div class="section-inner">
+    <p class="section-label">Cuándo y dónde</p>
+    <h2 class="section-title">Os esperamos aquí</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">🌿</span>
+        <h3>Ceremonia</h3>
+        <p>Igrexa de Santiago<br>A Coruña, Galicia<br><br>10 de abril · 12:00 h</p>
+        <a href="https://www.coruna.gal/web/gl/detalle/parroquia-iglesia-de-santa-maria-y-santiago/entidad/1149056044903" target="_blank">Ver en el mapa →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🍃</span>
+        <h3>Celebración</h3>
+        <p>Lugar del banquete<br>A completar<br><br>A partir de las 14:00 h</p>
+        <a href="#">Ver indicaciones →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🌾</span>
+        <h3>Alojamiento</h3>
+        <p>Hemos reservado habitaciones en varios hoteles cercanos. Escríbenos para más información.</p>
+        <a href="#rsvp">Consultar →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🍂</span>
+        <h3>Confirmación</h3>
+        <p>Por favor confirmad vuestra asistencia antes del <strong>1 de marzo</strong>. ¡Os esperamos!</p>
+        <a href="#rsvp">Confirmar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="section-inner">
+    <p class="section-label">Fotos</p>
+    <h2 class="section-title">Nuestra historia en imágenes</h2>
+    <div class="photo-grid">
+      <div class="photo-cell" style="background: #ddd4c0;">
+        <div class="photo-placeholder">Vuestra foto<br>favorita aquí</div>
+      </div>
+      <div class="photo-cell" style="background: #cec4b0;">
+        <div class="photo-placeholder" style="font-size:0.75rem;">Foto 2</div>
+      </div>
+      <div class="photo-cell" style="background: #d8cebb;">
+        <div class="photo-placeholder" style="font-size:0.75rem;">Foto 3</div>
+      </div>
+      <div class="photo-cell" style="background: #c8bfaa;">
+        <div class="photo-placeholder" style="font-size:0.75rem;">Foto 4</div>
+      </div>
+      <div class="photo-cell" style="background: #d2c9b4;">
+        <div class="photo-placeholder" style="font-size:0.75rem;">Foto 5</div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:1rem; font-size:0.8rem; color: var(--stone); font-style:italic;">Sustituye los bloques de color por tus fotos añadiendo una etiqueta &lt;img&gt; dentro de cada .photo-cell 🌿</p>
+  </div>
+</section>
+
+<section id="dresscode">
+  <div class="section-inner">
+    <p class="section-label">Dress code</p>
+    <h2 class="section-title">Cómo venir vestidos</h2>
+    <div class="palette">
+      <div class="swatch"><div class="swatch-circle" style="background:#F5EFE0;"></div><div class="swatch-name">Crema</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#E8D9BC;"></div><div class="swatch-name">Arena</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#C4A882;"></div><div class="swatch-name">Camel</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#7A8C6A;"></div><div class="swatch-name">Salvia</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#4E6044;"></div><div class="swatch-name">Musgo</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#9C9080;"></div><div class="swatch-name">Piedra</div></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#6B4C30;"></div><div class="swatch-name">Tierra</div></div>
+    </div>
+    <p class="dresscode-text">
+      El estilo es elegante natural. Apostamos por tonos tierra, verdes y cremas que armonicen con el entorno.<br><br>
+      Os pedimos que evitéis:
+    </p>
+    <div style="text-align:center; margin-top:1rem;">
+      <span class="avoid-tag">Blanco / Marfil</span>
+      <span class="avoid-tag">Negro luto</span>
+      <span class="avoid-tag">Colores muy estridentes</span>
+      <span class="avoid-tag">Ropa informal</span>
+    </div>
+  </div>
+</section>
+
+<section id="regalos">
+  <div class="section-inner">
+    <p class="section-label">Regalos</p>
+    <h2 class="section-title">Si queréis hacernos un regalo</h2>
+    <div class="gift-box">
+      <p>Vuestra presencia ya es el mejor regalo que podéis hacernos.<br>Si aun así queréis contribuir a nuestro futuro juntos, podéis hacerlo a través de:</p>
+      <div class="iban-label">Lista de bodas / aportación</div>
+      <div class="iban-box">
+        IBAN: ES00 0000 0000 0000 0000 0000<br>
+        <span style="font-size:0.75rem; color: var(--stone);">A nombre de Vicente García / Miriam López</span>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.85rem; color: var(--stone); font-family: 'Jost', sans-serif; font-style: normal;">
+        También tenemos lista en <a href="#" style="color: var(--earth);">El Corte Inglés</a> · ref. 0000000
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="section-inner">
+    <p class="section-label">Confirmación</p>
+    <h2 class="section-title">¿Venís a la boda?</h2>
+    <div class="rsvp-form" id="rsvp-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre" id="f-name"/>
+        </div>
+        <div class="form-field">
+          <label>Apellidos</label>
+          <input type="text" placeholder="Tus apellidos" id="f-surname"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Asistencia</label>
+          <select id="f-attend">
+            <option value="">Seleccionar...</option>
+            <option value="si">Sí, allí estaré</option>
+            <option value="no">No podré asistir</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Menú especial</label>
+          <select id="f-menu">
+            <option value="ninguno">Sin restricciones</option>
+            <option value="vegetariano">Vegetariano</option>
+            <option value="vegano">Vegano</option>
+            <option value="celiaco">Sin gluten</option>
+            <option value="otro">Otro (indicar)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Acompañantes</label>
+        <input type="text" placeholder="Nombres de tus acompañantes (si los hay)" id="f-guests"/>
+      </div>
+      <div class="form-field">
+        <label>Mensaje para los novios</label>
+        <textarea placeholder="Cuéntanos algo bonito..." id="f-msg"></textarea>
+      </div>
+      <button class="btn-rsvp" onclick="submitRSVP()">Confirmar asistencia</button>
+    </div>
+    <div class="rsvp-success" id="rsvp-success">
+      ¡Gracias, te esperamos con mucho cariño! 🌿<br>
+      <span style="font-size:0.9rem; font-family:'Jost',sans-serif; font-style:normal; color:var(--stone);">Os llegará un correo de confirmación pronto.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--earth);">Vicente &amp; Miriam</span><br>
+  <span style="font-size:10px; letter-spacing:0.1em;">10 de abril · Igrexa de Santiago, A Coruña</span>
+</footer>
+
+<script>
+function countdown() {
+  var wedding = new Date('2027-04-10T12:00:00');
+  var now = new Date();
+  var diff = wedding - now;
+  if (diff <= 0) return;
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+countdown();
+setInterval(countdown, 1000);
+
+function submitRSVP() {
+  var name = document.getElementById('f-name').value.trim();
+  var attend = document.getElementById('f-attend').value;
+  if (!name || !attend) {
+    alert('Por favor rellena al menos tu nombre y si asistirás.');
+    return;
+  }
+  document.getElementById('rsvp-form').style.display = 'none';
+  document.getElementById('rsvp-success').style.display = 'block';
+}
+</script>
+</body>
+</html>

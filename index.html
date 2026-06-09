@@ -514,47 +514,56 @@
     <h2 class="section-title">¿Venís a la boda?</h2>
     <div class="rsvp-form" id="rsvp-form">
      <form id="formspree-form" action="https://formspree.io/f/mqeobdpa" method="POST">
-      <div class="form-row">
-        <div class="form-field">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre" id="f-name"/>
-        </div>
-        <div class="form-field">
-          <label>Apellidos</label>
-          <input type="text" placeholder="Tus apellidos" id="f-surname"/>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Asistencia</label>
-          <select id="f-attend">
-            <option value="">Seleccionar...</option>
-            <option value="si">Sí, allí estaré</option>
-            <option value="no">No podré asistir</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Menú especial</label>
-          <select id="f-menu">
-            <option value="ninguno">Sin restricciones</option>
-            <option value="vegetariano">Vegetariano</option>
-            <option value="vegano">Vegano</option>
-            <option value="celiaco">Sin gluten</option>
-            <option value="otro">Otro (indicar)</option>
-          </select>
-        </div>
+      <div class="rsvp-form" id="rsvp-form">
+  <form action="https://formspree.io/f/mqeobdpa" method="POST">
+
+    <div class="form-row">
+      <div class="form-field">
+        <label>Nombre</label>
+        <input type="text" name="nombre" placeholder="Tu nombre" required/>
       </div>
       <div class="form-field">
-        <label>Acompañantes</label>
-        <input type="text" placeholder="Nombres de tus acompañantes (si los hay)" id="f-guests"/>
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" placeholder="Tus apellidos" required/>
       </div>
-      <div class="form-field">
-        <label>Mensaje para los novios</label>
-        <textarea placeholder="Cuéntanos algo bonito..." id="f-msg"></textarea>
-      </div>
-      <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
-      </form>
     </div>
+
+    <div class="form-field">
+      <label>Correo electrónico</label>
+      <input type="email" name="email" placeholder="tu@email.com" required/>
+    </div>
+
+    <div class="form-field">
+      <label>Menú especial</label>
+      <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.25rem;">
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; letter-spacing:0; text-transform:none; color:var(--stone);">
+          <input type="checkbox" name="menu" value="Vegetariano"/> Vegetariano
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; letter-spacing:0; text-transform:none; color:var(--stone);">
+          <input type="checkbox" name="menu" value="Vegano"/> Vegano
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; letter-spacing:0; text-transform:none; color:var(--stone);">
+          <input type="checkbox" name="menu" value="Sin gluten"/> Sin gluten
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; letter-spacing:0; text-transform:none; color:var(--stone);">
+          <input type="checkbox" name="menu" value="Sin lactosa"/> Sin lactosa
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; letter-spacing:0; text-transform:none; color:var(--stone);">
+          <input type="checkbox" name="menu" value="Otros"/> Otros
+        </label>
+        <input type="text" name="menu_otros" placeholder="Indicar si marcaste Otros..."/>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Comentarios</label>
+      <textarea name="comentarios" placeholder="Cuéntanos algo bonito..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
+
+  </form>
+</div>
     <div class="rsvp-success" id="rsvp-success">
       ¡Gracias, te esperamos con mucho cariño! 🌿<br>
       <span style="font-size:0.9rem; font-family:'Jost',sans-serif; font-style:normal; color:var(--stone);">Os llegará un correo de confirmación pronto.</span>

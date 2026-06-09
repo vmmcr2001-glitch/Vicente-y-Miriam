@@ -513,6 +513,7 @@
     <p class="section-label">Confirmación</p>
     <h2 class="section-title">¿Venís a la boda?</h2>
     <div class="rsvp-form" id="rsvp-form">
+     <form id="formspree-form" action="https://formspree.io/f/mqeobdpa" method="POST">
       <div class="form-row">
         <div class="form-field">
           <label>Nombre</label>
@@ -551,7 +552,8 @@
         <label>Mensaje para los novios</label>
         <textarea placeholder="Cuéntanos algo bonito..." id="f-msg"></textarea>
       </div>
-      <button class="btn-rsvp" onclick="submitRSVP()">Confirmar asistencia</button>
+      <button type="submit" class="btn-rsvp">Confirmar asistencia</button>
+      </form>
     </div>
     <div class="rsvp-success" id="rsvp-success">
       ¡Gracias, te esperamos con mucho cariño! 🌿<br>

@@ -292,6 +292,16 @@
   appearance: auto;
   -webkit-appearance: checkbox;
 }
+ #rsvp input[type="number"]{-moz-appearance:textfield}
+#rsvp input[type="number"]::-webkit-outer-spin-button,#rsvp input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.companion-names-container{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
+.companion-names-container input{background:rgba(255,255,255,0.05);border:1px solid var(--bark);border-radius:2px;padding:0.75rem 1rem;font-family:'Jost',sans-serif;font-size:0.9rem;color:var(--cream);outline:none;transition:border-color 0.2s}
+.companion-names-container input::placeholder{color:var(--stone)}
+.companion-names-container input:focus{border-color:var(--earth)}
+.form-hint{font-size:0.75rem;color:var(--stone);font-style:italic;margin-top:0.2rem}
+.radio-group{display:flex;gap:1.5rem;margin-top:0.25rem}
+.radio-group label{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;letter-spacing:0;text-transform:none;color:var(--stone);cursor:pointer}
+#rsvp input[type="radio"]{width:16px;height:16px;accent-color:var(--earth);cursor:pointer;flex-shrink:0;appearance:auto;-webkit-appearance:radio}
 </style>
 </head>
 <body>
@@ -505,10 +515,9 @@
     <div class="gift-box">
       <p>Vuestra presencia ya es el mejor regalo que podéis hacernos.<br>Si aun así queréis contribuir a nuestro futuro juntos, podéis hacerlo a través de:</p>
       <div class="iban-label">Lista de bodas / aportación EUR</div>
-      <div class="iban-box">
-        IBAN 1: ES75 0049 7465 4720 1000 0273<br>
+      <div class="iban-box">        
         IBAN 2: ES05 0182 4383 9802 0250 0612<br>
-        <span style="font-size:0.75rem; color: var(--stone);">A nombre de Vicente Cisneros (1) / Miriam Abid Fraga (2)</span>
+        <span style="font-size:0.75rem; color: var(--stone);">A nombre de Miriam Abid Fraga (2)</span>
       </div>
      <div class="iban-label">Lista de bodas / aportación US</div>
       <div class="iban-box">
@@ -549,6 +558,15 @@
   <label>Dirección para tu invitación</label>
   <input type="text" name="direccion" placeholder="Calle, número, ciudad, número, piso,  ..."/>
      </div>
+   <div class="form-field">
+  <label>Número de acompañantes</label>
+  <input type="number" name="acompanantes" id="num-acompanantes" placeholder="0" min="0" max="10" value="0"/>
+  <span class="form-hint">Sin contarte a ti. 0 si vienes solo/a.</span>
+</div>
+<div class="form-field" id="nombres-acomp-wrapper" style="display:none;">
+  <label>Nombres de los acompañantes</label>
+  <div class="companion-names-container" id="companion-names"></div>
+</div>
     <div class="form-field">
       <label>Menú especial</label>
       <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.25rem;">
@@ -570,7 +588,19 @@
         <input type="text" name="menu_otros" placeholder="Indicar si marcaste Otros..."/>
       </div>
     </div>
-
+<div class="form-field">
+  <label>Alergias o intolerancias</label>
+  <input type="text" name="alergias" placeholder="Ej: frutos secos, marisco, huevo..."/>
+  <span class="form-hint">Incluye las de tus acompañantes si las tienen.</span>
+</div>
+<div class="form-field">
+  <label>¿Necesitáis autobús?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="autobus" value="Sí, por favor"/> Sí, por favor</label>
+    <label><input type="radio" name="autobus" value="No, gracias"/> No, gracias</label>
+  </div>
+  <span class="form-hint">Ida y vuelta entre la ceremonia y el restaurante.</span>
+</div>
     <div class="form-field">
       <label>Comentarios</label>
       <textarea name="comentarios" placeholder="Cuéntanos algo bonito..."></textarea>
@@ -620,6 +650,16 @@ function submitRSVP() {
   document.getElementById('rsvp-form').style.display = 'none';
   document.getElementById('rsvp-success').style.display = 'block';
 }
+ var numInput=document.getElementById('num-acompanantes');
+var wrapper=document.getElementById('nombres-acomp-wrapper');
+var container=document.getElementById('companion-names');
+numInput.addEventListener('input',function(){
+  var n=parseInt(this.value)||0;
+  if(n>10){n=10;this.value=10;}
+  container.innerHTML='';
+  if(n>0){wrapper.style.display='flex';for(var i=1;i<=n;i++){var inp=document.createElement('input');inp.type='text';inp.name='acompanante_'+i;inp.placeholder='Nombre y apellidos del acompañante '+i;container.appendChild(inp);}}
+  else{wrapper.style.display='none';}
+});
 </script>
 </body>
 </html>

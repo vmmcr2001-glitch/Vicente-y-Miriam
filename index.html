@@ -178,7 +178,10 @@
     grid-auto-rows: 200px;
     gap: 8px; border-radius: 4px; overflow: hidden;
   }
-  @media (max-width: 700px) { .photo-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; } }
+  @media (max-width: 700px) {
+    .photo-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+    .photo-cell.wide { grid-column: span 2; }
+  }
   .photo-cell {
     background: var(--sand);
     display: flex; align-items: center; justify-content: center;
@@ -462,19 +465,21 @@
   <div class="section-inner">
     <p class="section-label">Fotos</p>
     <h2 class="section-title">Nuestra historia en imágenes</h2>
-   <div class="photo-grid">
-  <div class="photo-cell"><img src="fotos/La%20Merced.png" alt="La Merced"/></div>
-  <div class="photo-cell"><img src="fotos/Miami.png" alt="Miami"/></div>
-  <div class="photo-cell"><img src="fotos/Teatro%20Liceu.png" alt="Teatro Liceu"/></div>
-  <div class="photo-cell wide"><img src="fotos/fragas%20do%20eume%20.jpeg" alt="Fragas do Eume"/></div>
-  <div class="photo-cell"><img src="fotos/roma.jpeg" alt="Roma"/></div>
-  <div class="photo-cell"><img src="fotos/montserrat.jpeg" alt="Montserrat"/></div>
-  <div class="photo-cell"><img src="fotos/lourdes.jpeg" alt="Lourdes"/></div>
-  <div class="photo-cell"><img src="fotos/miami.jpeg" alt="Miami"/></div>
-  <div class="photo-cell"><img src="fotos/IMG_3164.jpeg" alt="Vicente y Miriam"/></div>
-  <div class="photo-cell"><img src="fotos/IMG_4825.jpeg" alt="Vicente y Miriam"/></div>
-    <div class="photo-cell wide"><img src="fotos/IMG_1003.jpeg" alt="Vicente y Miriam"/></div>
-</div>
+    <div class="photo-grid">
+      <div class="photo-cell wide"><img src="fotos/fragas%20do%20eume%20.jpeg" alt="Fragas do Eume"/></div>
+      <div class="photo-cell"><img src="fotos/La%20Merced.png" alt="La Merced"/></div>
+      <div class="photo-cell"><img src="fotos/Miami.png" alt="Miami"/></div>
+      <div class="photo-cell"><img src="fotos/Teatro%20Liceu.png" alt="Teatro Liceu"/></div>
+      <div class="photo-cell"><img src="fotos/roma.jpeg" alt="Roma"/></div>
+      <div class="photo-cell"><img src="fotos/montserrat.jpeg" alt="Montserrat"/></div>
+      <div class="photo-cell"><img src="fotos/lourdes.jpeg" alt="Lourdes"/></div>
+      <div class="photo-cell"><img src="fotos/miami.jpeg" alt="Miami"/></div>
+      <div class="photo-cell"><img src="fotos/IMG_3164.jpeg" alt="Vicente y Miriam"/></div>
+      <div class="photo-cell"><img src="fotos/IMG_4825.jpeg" alt="Vicente y Miriam"/></div>
+      <div class="photo-cell"><img src="fotos/IMG_1003.jpeg" alt="Vicente y Miriam"/></div>
+    </div>
+  </div>
+</section>
 </section>
 
 <section id="dresscode">

@@ -405,7 +405,7 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-year">El primer encuentro</div>
-        <p class="timeline-text">Una romería al Santuario de la Virgen de Lourdes, una clase de la universidad, descansos de la biblioteca y muchos paseos fueron ingredientes esenciales</p>
+        <p class="timeline-text">Todo empezó sin prisa: Una romería al Santuario de la Virgen de Lourdes, una clase de la universidad, descansos de la biblioteca y muchos paseos fueron ingredientes esenciales</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
@@ -452,6 +452,220 @@
   </div>
 </section>
 
+
+<section id="tiempo" style="background: var(--light);">
+  <style>
+    #tiempo .section-title { margin-bottom: 1rem; }
+    #tiempo .tiempo-intro {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.1rem;
+      color: var(--stone);
+      max-width: 560px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    #tiempo .tiempo-grid {
+      display: grid;
+      grid-template-columns: 56px repeat(15, 1fr);
+      gap: 4px; max-width: 720px; margin: 0 auto 1.5rem;
+    }
+    #tiempo .t-year {
+      display: flex; align-items: center; justify-content: flex-end;
+      padding-right: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-style: italic; color: var(--bark);
+    }
+    #tiempo .t-hdr {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; letter-spacing: 0.05em;
+      color: var(--stone); padding-bottom: 4px;
+    }
+    #tiempo .t-hdr.wedding { color: var(--earth); font-weight: 500; }
+    #tiempo .t-cell {
+      aspect-ratio: 1; display: flex;
+      align-items: center; justify-content: center;
+      border-radius: 4px;
+    }
+    #tiempo .t-cell.wedding {
+      outline: 1.5px solid var(--earth); outline-offset: -1.5px;
+    }
+    #tiempo .t-icon { width: 55%; height: 55%; max-width: 18px; max-height: 18px; }
+    #tiempo .sun     { background: #F0E4CC; color: #8A6835; }
+    #tiempo .fog     { background: #DDD5C6; color: #6B5F4A; }
+    #tiempo .drizzle { background: #D2DBC8; color: #5A6D50; }
+    #tiempo .rain    { background: #9CAF95; color: #3A4A32; }
+    #tiempo .storm   { background: #6A7A5D; color: #F5EFE0; }
+
+    #tiempo .tiempo-legend {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px 22px; max-width: 720px; margin: 0 auto 2.5rem;
+      font-size: 11px; letter-spacing: 0.05em; color: var(--stone);
+    }
+    #tiempo .tl-item { display: flex; align-items: center; gap: 6px; }
+    #tiempo .tl-swatch {
+      width: 18px; height: 18px; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #tiempo .tl-swatch svg { width: 60%; height: 60%; }
+    #tiempo .tl-wedding-mark {
+      width: 18px; height: 18px; border-radius: 4px;
+      border: 1.5px solid var(--earth);
+    }
+
+    #tiempo .tiempo-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; max-width: 720px; margin: 0 auto;
+    }
+    #tiempo .tiempo-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 4px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+    #tiempo .tc-label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--stone); margin-bottom: 0.5rem;
+    }
+    #tiempo .tc-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; color: var(--bark);
+      line-height: 1.3; margin-bottom: 0.4rem;
+    }
+    #tiempo .tc-sub { font-size: 11px; color: var(--stone); line-height: 1.5; }
+
+    @media (max-width: 640px) {
+      #tiempo .tiempo-grid { grid-template-columns: 40px repeat(15, 1fr); gap: 2px; }
+      #tiempo .t-year { font-size: 0.9rem; padding-right: 6px; }
+      #tiempo .t-hdr { font-size: 9px; }
+      #tiempo .t-icon { max-width: 12px; max-height: 12px; }
+      #tiempo .tiempo-summary { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+    <defs>
+      <symbol id="t-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 3v2M12 19v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </symbol>
+      <symbol id="t-fog" viewBox="0 0 24 24">
+        <path d="M4 9h16M3 13h18M5 17h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </symbol>
+      <symbol id="t-drizzle" viewBox="0 0 24 24">
+        <path d="M18 14a4 4 0 0 0-1-7.87 6 6 0 0 0-11.6 2A4 4 0 0 0 6 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 18l-1 2M13 18l-1 2M17 18l-1 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </symbol>
+      <symbol id="t-rain" viewBox="0 0 24 24">
+        <path d="M18 14a4 4 0 0 0-1-7.87 6 6 0 0 0-11.6 2A4 4 0 0 0 6 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 17v3M12 17v3M16 17v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </symbol>
+      <symbol id="t-storm" viewBox="0 0 24 24">
+        <path d="M18 12a4 4 0 0 0-1-7.87 6 6 0 0 0-11.6 2A4 4 0 0 0 6 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 13l-3 5h4l-2 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="section-inner">
+    <p class="section-label">El tiempo en abril</p>
+    <h2 class="section-title">Un vistazo a los últimos tres años</h2>
+    <p class="tiempo-intro">
+      Para que vayáis con una idea, así se portó el tiempo en A Coruña del 3 al 17 de abril los últimos tres años. El día 10 lo hemos marcado en color tierra.
+    </p>
+
+    <div class="tiempo-grid">
+      <div></div>
+      <div class="t-hdr">3</div><div class="t-hdr">4</div><div class="t-hdr">5</div>
+      <div class="t-hdr">6</div><div class="t-hdr">7</div><div class="t-hdr">8</div>
+      <div class="t-hdr">9</div><div class="t-hdr wedding">10</div><div class="t-hdr">11</div>
+      <div class="t-hdr">12</div><div class="t-hdr">13</div><div class="t-hdr">14</div>
+      <div class="t-hdr">15</div><div class="t-hdr">16</div><div class="t-hdr">17</div>
+
+      <div class="t-year">2023</div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell fog" title="Niebla parcial"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell fog" title="Niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell fog" title="Niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell fog" title="Niebla, calima"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell drizzle wedding" title="Lluvia ligera y llovizna"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell fog" title="Niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell rain" title="Lluvia, llovizna"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell storm" title="Lluvia intensa"><svg class="t-icon"><use href="#t-storm"/></svg></div>
+      <div class="t-cell rain" title="Lluvia, llovizna"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell drizzle" title="Llovizna"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell drizzle" title="Llovizna ligera"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell fog" title="Niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+
+      <div class="t-year">2024</div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell drizzle" title="Lluvia ligera, llovizna"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell rain" title="Lluvia"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell rain" title="Lluvia y llovizna"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell storm" title="Lluvia intensa, chubascos"><svg class="t-icon"><use href="#t-storm"/></svg></div>
+      <div class="t-cell rain" title="Chubascos"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell sun wedding" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell fog" title="Niebla, calima"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+
+      <div class="t-year">2025</div>
+      <div class="t-cell rain" title="Lluvia, niebla"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell rain" title="Chubascos"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell drizzle" title="Lluvia ligera"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell fog" title="Manchas de niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell fog" title="Manchas de niebla"><svg class="t-icon"><use href="#t-fog"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun wedding" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell drizzle" title="Lluvia ligera, llovizna"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+      <div class="t-cell sun" title="Despejado"><svg class="t-icon"><use href="#t-sun"/></svg></div>
+      <div class="t-cell rain" title="Lluvia"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell storm" title="Tormenta con granizo, lluvia intensa"><svg class="t-icon"><use href="#t-storm"/></svg></div>
+      <div class="t-cell rain" title="Lluvia"><svg class="t-icon"><use href="#t-rain"/></svg></div>
+      <div class="t-cell drizzle" title="Lluvia ligera"><svg class="t-icon"><use href="#t-drizzle"/></svg></div>
+    </div>
+
+    <div class="tiempo-legend">
+      <span class="tl-item"><span class="tl-swatch sun"><svg><use href="#t-sun"/></svg></span>Despejado</span>
+      <span class="tl-item"><span class="tl-swatch fog"><svg><use href="#t-fog"/></svg></span>Niebla / calima</span>
+      <span class="tl-item"><span class="tl-swatch drizzle"><svg><use href="#t-drizzle"/></svg></span>Llovizna / lluvia ligera</span>
+      <span class="tl-item"><span class="tl-swatch rain"><svg><use href="#t-rain"/></svg></span>Lluvia</span>
+      <span class="tl-item"><span class="tl-swatch storm"><svg><use href="#t-storm"/></svg></span>Lluvia intensa / tormenta</span>
+      <span class="tl-item"><span class="tl-wedding-mark"></span>10 de abril</span>
+    </div>
+
+    <div class="tiempo-summary">
+      <div class="tiempo-card">
+        <div class="tc-label">10 de abril · 3 años</div>
+        <div class="tc-value">2 de 3 despejados</div>
+        <div class="tc-sub">2024 ✓ · 2025 ✓ · 2023 llovizna</div>
+      </div>
+      <div class="tiempo-card">
+        <div class="tc-label">Ventana 3–17 abril</div>
+        <div class="tc-value">~40% de días secos</div>
+        <div class="tc-sub">Alterna días secos y lluviosos</div>
+      </div>
+      <div class="tiempo-card">
+        <div class="tc-label">Climatología abril</div>
+        <div class="tc-value">16 °C / 10 °C</div>
+        <div class="tc-sub">13–17 días con lluvia · 100–115 mm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ 
 <section id="fotos">
   <div class="section-inner">
     <p class="section-label">Nuestra historia en imágenes</p>

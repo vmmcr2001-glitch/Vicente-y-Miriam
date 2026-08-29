@@ -101,8 +101,8 @@
     font-size: 2rem; color: var(--sand);
     align-self: flex-start; padding-top: 0.3rem;
   }
-  section { padding: 5rem 2rem; }
-  .section-inner { max-width: 820px; margin: 0 auto; }
+  section { padding: 5rem 2rem; position: relative; overflow: hidden; }
+  .section-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
   .section-label {
     font-size: 22px; letter-spacing: 0.3em;
     text-transform: uppercase; color: var(--sage);
@@ -118,7 +118,8 @@
     font-weight: 300; text-align: center;
     color: var(--dark); margin-bottom: 2.5rem;
   }
-  #historia { background: var(--light); }
+
+
   .timeline { position: relative; padding-left: 2rem; }
   .timeline::before {
     content: '';
@@ -144,7 +145,6 @@
     font-size: 1.2rem; font-style: italic;
     color: var(--dark); line-height: 1.7;
   }
-  #cuando { background: var(--cream); }
   .info-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
@@ -171,7 +171,6 @@
     text-decoration: none; border-bottom: 1px solid var(--sage);
     padding-bottom: 2px;
   }
-  #fotos { background: var(--light); }
   .photo-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -195,7 +194,6 @@
     color: var(--earth); text-align: center; padding: 1rem;
     position: absolute;
   }
-  #dresscode { background: var(--cream); }
   .palette { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
   .swatch { text-align: center; }
   .swatch-circle {
@@ -218,7 +216,6 @@
     font-size: 11px; color: var(--stone);
     padding: 4px 14px; margin: 4px;
   }
-  #regalos { background: var(--light); }
   .gift-box {
     background: var(--cream);
     border: 1px solid var(--sand);
@@ -401,42 +398,79 @@
   </div>
 </section>
 
-<section id="confirmacion" style="background: var(--cream);">
+<!-- CONFIRMACIÓN · claro -->
+<section id="confirmacion" style="background: var(--light);">
   <div class="section-inner">
     <p class="section-label">Confirmación</p>
     <div class="info-card" style="max-width:420px; margin:0 auto;">
-     
+      <span class="info-icon">🍂</span>
       <h3>Confirmación</h3>
       <p>Por favor confirmad vuestra asistencia antes del <strong>1 de marzo</strong>. ¡Os esperamos!</p>
       <a href="#rsvp">Confirmar →</a>
     </div>
   </div>
 </section>
- 
 
-
-<section id="cuando">
+<!-- CUÁNDO Y DÓNDE · crema -->
+<section id="cuando" style="background: var(--cream);">
   <div class="section-inner">
     <p class="section-label">Cuándo y dónde</p>
     <div class="info-grid">
-  <div class="info-card">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2900.3543078062785!2d-8.396631687734754!3d43.3696151709966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7b805193a1e7%3A0x4cc841d2c8425b5f!2sIglesia%20de%20Santiago!5e0!3m2!1ses-419!2ses!4v1787996028681!5m2!1ses-419!2ses" style="width:100%; height:200px; border:0; border-radius:4px; margin-bottom:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    <h3>Ceremonia</h3>
-    <p>Igrexa de Santiago<br>Rúa do Parrote, 1, 15001 A Coruña<br>A Coruña, Galicia<br><br>10 de abril · 12:15 h</p>
-    <a href="https://maps.app.goo.gl/GQZE6BduY4WSAqE16" target="_blank">Ver en el mapa →</a>
-  </div>
-  <div class="info-card">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.2571441436457!2d-8.323475737735569!3d43.35073152099755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7abcf1d2c8af%3A0x95eb71402784bcef!2sPazo%20de%20Xaz!5e0!3m2!1ses-419!2ses!4v1787995819585!5m2!1ses-419!2ses" style="width:100%; height:200px; border:0; border-radius:4px; margin-bottom:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>    <h3>Celebración</h3>
-    <p>Pazo de Xaz<br>Rúa Castro de Xaz, 18, 15178 Dorneda, A Coruña<br>A Coruña, Galicia<br><br>A partir de las 14:15 h</p>
-    <a href="https://xaz.golf/el-club/historia/" target="_blank">Pazo de Xaz →</a>
-  </div>
- 
-</div>
+      <div class="info-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2900.3543078062785!2d-8.396631687734754!3d43.3696151709966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7b805193a1e7%3A0x4cc841d2c8425b5f!2sIglesia%20de%20Santiago!5e0!3m2!1ses-419!2ses!4v1787996028681!5m2!1ses-419!2ses" style="width:100%; height:200px; border:0; border-radius:4px; margin-bottom:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <h3>Ceremonia</h3>
+        <p>Igrexa de Santiago<br>Rúa do Parrote, 1, 15001 A Coruña<br>A Coruña, Galicia<br><br>10 de abril · 12:15 h</p>
+        <a href="https://maps.app.goo.gl/GQZE6BduY4WSAqE16" target="_blank">Ver en el mapa →</a>
+      </div>
+      <div class="info-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.2571441436457!2d-8.323475737735569!3d43.35073152099755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7abcf1d2c8af%3A0x95eb71402784bcef!2sPazo%20de%20Xaz!5e0!3m2!1ses-419!2ses!4v1787995819585!5m2!1ses-419!2ses" style="width:100%; height:200px; border:0; border-radius:4px; margin-bottom:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <h3>Celebración</h3>
+        <p>Pazo de Xaz<br>Rúa Castro de Xaz, 18, 15178 Dorneda, A Coruña<br>A Coruña, Galicia<br><br>A partir de las 14:15 h</p>
+        <a href="https://xaz.golf/el-club/historia/" target="_blank">Pazo de Xaz →</a>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ALOJAMIENTOS · claro -->
+<section id="alojamientos" style="background: var(--light);">
+  <div class="section-inner">
+    <p class="section-label">Alojamientos</p>
+    <h2 class="section-title">Dónde quedaros</h2>
+    <p class="dresscode-text" style="margin-bottom:2.5rem;">
+      Seguimos trabajando para acordar tarifas especiales con algunos de los siguientes hoteles. Dentro de poco actualizaremos esta sección; por favor, estad pendientes si os interesa. — Vicente y Miriam.
+    </p>
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">🏨</span>
+        <h3>Meliá María Pita</h3>
+        <p>Av. de Pedro Barrié de la Maza, 3, 15003 A Coruña</p>
+        <a href="" target="_blank">Reservar →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🏨</span>
+        <h3>Eurostars Atlántico</h3>
+        <p>Avda. do Porto da Coruña, 4, 15006 A Coruña</p>
+        <a href="" target="_blank">Reservar →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🏨</span>
+        <h3>DoubleTree by Hilton A Coruña</h3>
+        <p>R. Zalaeta, 12, 15002 A Coruña</p>
+        <a href="" target="_blank">Reservar →</a>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🏨</span>
+        <h3>Hotel Zenit Coruña</h3>
+        <p>Rúa Comandante Fontanes, 19, 15003 A Coruña</p>
+        <a href="" target="_blank">Reservar →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="tiempo" style="background: var(--light);">
+<!-- EL TIEMPO · crema -->
+<section id="tiempo" style="background: var(--cream);">
   <style>
     #tiempo .section-title { margin-bottom: 1rem; }
     #tiempo .tiempo-intro {
@@ -500,7 +534,7 @@
       gap: 1rem; max-width: 720px; margin: 0 auto;
     }
     #tiempo .tiempo-card {
-      background: var(--cream);
+      background: var(--light);
       border: 1px solid var(--sand);
       border-radius: 4px;
       padding: 1.5rem 1.25rem;
@@ -549,45 +583,7 @@
       </symbol>
     </defs>
   </svg>
- 
-<section id="alojamientos" style="background: var(--cream);">
-  <div class="section-inner">
-    <p class="section-label">Alojamientos</p>
-    <h2 class="section-title">Dónde quedaros</h2>
-    <p class="dresscode-text" style="margin-bottom:2.5rem;">
-      Seguimos trabajando por acordar tarifas especiales con algunos de los siguientes hoteles. Dentro de poco realizaremos una actualización con ello, por favor, estad pendientes si os interesaría &amp; Vicente y Miriam.
-    </p>
-   
-    <div class="info-grid">
-      <div class="info-card">
-        <span class="info-icon">🏨</span>
-        <h3>Meliá Maria Pita</h3>
-        <p>Av. de Pedro Barrié de la Maza, 3, 15003 A Coruña<br>
-        <a href="" target="_blank">Reservar →</a>
-      </div>
-      <div class="info-card">
-        <span class="info-icon">🏨</span>
-        <h3>Eurostars Atlántico</h3>
-        <p>Avda. do Porto de A Coruña, 4, 15006 A Coruña<br>
-        <a href="" target="_blank">Reservar →</a>
-      </div>
-     <div class="info-card">
-        <span class="info-icon">🏨</span>
-        <h3>DoubleTree by Hilton A Coruna</h3>
-        <p>R. Zalaeta, 12, 15002 A Coruña<br>
-        <a href="" target="_blank">Reservar →</a>
-      </div>
-      <div class="info-card">
-        <span class="info-icon">🏨</span>
-        <h3>Hotel Zenit Coruña</h3>
-        <p>Rúa Comandante Fontanes, 19, 15003 A Coruña<br>
-        <a href="" target="_blank">Reservar →</a>
-      </div>
-  
-    </div>
-  </div>
-</section>
- 
+
   <div class="section-inner">
     <p class="section-label">El tiempo en abril</p>
     <h2 class="section-title">Un vistazo a los últimos tres años</h2>
@@ -684,24 +680,25 @@
   </div>
 </section>
 
-<section id="historia">
+<!-- NUESTRA HISTORIA · claro -->
+<section id="historia" style="background: var(--light);">
   <div class="section-inner">
     <p class="section-label">Nuestra historia</p>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-year">El primer encuentro</div>
-        <p class="timeline-text">Todo empezó sin prisa: Una romería al Santuario de la Virgen de Lourdes, una clase de la universidad, descansos de la biblioteca y muchos paseos recorriendo cada rincon de Barcelona</p>
+        <p class="timeline-text">Todo empezó sin prisa: una romería al Santuario de la Virgen de Lourdes, una clase de la universidad, descansos de la biblioteca y muchos paseos recorriendo cada rincón de Barcelona.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-year">Nuestro primer viaje</div>
-        <p class="timeline-text">A Coruña, Praia de Mar de Fora y paseos por la playa esperando que el atardecer fuese eterno. </p>
+        <p class="timeline-text">A Coruña, Praia de Mar de Fóra y paseos por la playa esperando que el atardecer fuese eterno.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-year">La pedida</div>
-        <p class="timeline-text">Dentro de la sencillez de la vida el amor conjugó este momento y lo hizo el día más feliz de nuestras vidas.</p>
+        <p class="timeline-text">Dentro de la sencillez de la vida, el amor conjugó este momento y lo hizo el día más feliz de nuestras vidas.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
@@ -712,14 +709,14 @@
   </div>
 </section>
 
- 
-<section id="fotos">
+<!-- FOTOS · crema -->
+<section id="fotos" style="background: var(--cream);">
   <div class="section-inner">
     <p class="section-label">Nuestra historia en imágenes</p>
     <div class="photo-grid">
       <div class="photo-cell wide"><img src="fotos/fragas%20do%20eume%20.jpeg" alt="Fragas do Eume"/></div>
       <div class="photo-cell"><img src="fotos/La%20Merced.png" alt="La Merced"/></div>
-      <div class="photo-cell"><img src="fotos/Sant Jordi.png" alt="Sant Jordi"/></div>
+      <div class="photo-cell"><img src="fotos/Sant%20Jordi.png" alt="Sant Jordi"/></div>
       <div class="photo-cell"><img src="fotos/La%20pedida.png" alt="La Pedida"/></div>
       <div class="photo-cell"><img src="fotos/roma.jpeg" alt="Roma"/></div>
       <div class="photo-cell"><img src="fotos/montserrat.jpeg" alt="Montserrat"/></div>
@@ -731,32 +728,31 @@
     </div>
   </div>
 </section>
-</section>
 
-<section id="dresscode">
+<!-- DRESS CODE · claro -->
+<section id="dresscode" style="background: var(--light);">
   <div class="section-inner">
     <p class="section-label">Dress code</p>
     <p class="dresscode-text">
       La celebración es de etiqueta de día.
-<br>Caballeros, traje oscuro con corbata.
-<br>Señoras, vestido midi o conjunto elegante en colores primaverales — solo os pedimos evitar el blanco, el beige y el negro. 
-     <br>Abril en Galicia puede refrescar al caer la tarde: una pashmina o una prenda que os abrigue será un aliado.
+      <br>Caballeros, traje oscuro con corbata.
+      <br>Señoras, vestido midi o conjunto elegante en colores primaverales — solo os pedimos evitar el blanco, el beige y el negro.
+      <br>Abril en Galicia puede refrescar al caer la tarde: una pashmina o una prenda que os abrigue será un aliado.
     </p>
-    
   </div>
 </section>
 
-<section id="regalos">
+<!-- REGALOS · crema -->
+<section id="regalos" style="background: var(--cream);">
   <div class="section-inner">
     <p class="section-label">Regalos</p>
     <div class="gift-box">
-      <p>Vuestra presencia y oraciones ya es el mejor regalo que podéis hacernos.<br>Si además nos queréis acompañar en este nuevo camino con un detalle, podéis escribirnos y os facilitaremos nuestros datos o la lista de regalos que hemos preparado.
-</p>
-      
+      <p>Vuestra presencia y oraciones ya son el mejor regalo que podéis hacernos.<br>Si además nos queréis acompañar en este nuevo camino con un detalle, podéis escribirnos y os facilitaremos nuestros datos o la lista de regalos que hemos preparado.</p>
     </div>
   </div>
 </section>
 
+<!-- RSVP · oscuro -->
 <section id="rsvp">
   <div class="section-inner">
     <p class="section-label">Confirmación</p>
@@ -780,7 +776,7 @@
     </div>
      <div class="form-field">
   <label>Dirección para tu invitación</label>
-  <input type="text" name="direccion" placeholder="Calle, número, ciudad, número, piso,  ..."/>
+  <input type="text" name="direccion" placeholder="Calle, número, ciudad, piso, ..."/>
      </div>
    <div class="form-field">
   <label>Número de acompañantes</label>
@@ -864,16 +860,6 @@ function countdown() {
 countdown();
 setInterval(countdown, 1000);
 
-function submitRSVP() {
-  var name = document.getElementById('f-name').value.trim();
-  var attend = document.getElementById('f-attend').value;
-  if (!name || !attend) {
-    alert('Por favor rellena al menos tu nombre y si asistirás.');
-    return;
-  }
-  document.getElementById('rsvp-form').style.display = 'none';
-  document.getElementById('rsvp-success').style.display = 'block';
-}
  var numInput=document.getElementById('num-acompanantes');
 var wrapper=document.getElementById('nombres-acomp-wrapper');
 var container=document.getElementById('companion-names');

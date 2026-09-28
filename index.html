@@ -1,4 +1,40 @@
-a  nav a {
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vicente & Miriam · 10 de Abril</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F5EFE0;
+    --sand: #E8D9BC;
+    --earth: #A07850;
+    --bark: #6B4C30;
+    --sage: #7A8C6A;
+    --moss: #4E6044;
+    --stone: #9C9080;
+    --dark: #3A2E22;
+    --light: #FAF6EE;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--sand);
+    display: flex; justify-content: center; gap: 2.5rem;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
     font-family: 'Jost', sans-serif;
     font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--stone);
